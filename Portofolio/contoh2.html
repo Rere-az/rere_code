@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Reygina Azahra</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5e6e0 0%, #e8d5d0 100%);
+            color: #2c5530;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .header::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            font-size: 2em;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '⭐';
+            position: absolute;
+            top: 30px;
+            right: 10%;
+            font-size: 1.5em;
+            animation: float 3s ease-in-out infinite 1.5s;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #2c5530, #4a7c59);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header-line {
+            width: 300px;
+            height: 3px;
+            background: linear-gradient(90deg, #2c5530, #d4a574);
+            margin: 20px auto;
+            border-radius: 2px;
+            animation: scaleX 1s ease-out 0.5s both;
+        }
+
+        /* About Section */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 80px 0;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .about-text h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #2c5530;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #4a4a4a;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tool-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tool-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tool-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        /* Education Section */
+        .education-section {
+            padding: 80px 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 30px;
+            margin: 50px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .education-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .education-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #2c5530, #d4a574);
+        }
+
+        .education-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            background: #2c5530;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: linear-gradient(135deg, #d4a574, #c69963);
+            color: white;
+            padding: 80px 0;
+            border-radius: 30px;
+            margin: 50px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .skill-category h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .skill-list li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 0;
+        }
+
+        .projects-section h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c5530;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #ccc;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #2c5530;
+        }
+
+        .project-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2c5530, #4a7c59);
+            color: white;
+            padding: 80px 0;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            font-size: 2em;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .contact-section::after {
+            content: '⭐';
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+            font-size: 1.5em;
+            animation: float 3s ease-in-out infinite 1.5s;
+        }
+
+        .contact-section h2 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 1.5em;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleX {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .education-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-text h2 {
+                font-size: 2.5em;
+            }
+
+            .projects-section h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>PORTOFOLIO <br>REYGINA AZAHRA</h1>
+            <div class="header-line"></div>
+        </header>
+
+        <!-- About Section -->
+        <section class="about-section animate-on-scroll">
+            <div class="about-text">
+                <h2>ABOUT ME</h2>
+                <p>Saya adalah mahasiswa Sistem Informasi yang memiliki ketertarikan di bidang analisis sistem, analisis data, dan desain UI/UX. Saya terbiasa membuat dokumentasi sistem, merancang alur kerja digital, serta mengolah data untuk menemukan insight yang bermanfaat. Saya juga aktif membuat prototype antarmuka menggunakan Figma, serta visualisasi data dengan Excel dan Google Data Studio.</p>
+                <p>Saya gemar membuat visualisasi data untuk membantu orang lain memahami informasi yang kompleks dengan lebih mudah. Saya juga memiliki minat dalam mengembangkan kemampuan saya dalam lingkungan kerja.</p>
+                <div class="tools-section">
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <img src="word.jpg" alt="Word">
+                        </div>
+                        <div class="tool-item">
+                            <img src="excel.png" alt="excel">
+                        </div>
+                        <div class="tool-item">
+                            <img src="figma.png" alt="Figma">
+                        </div>
+                        <div class="tool-item">
+                            <img src="Chart.js.svg.png" alt="Chart.js">
+                        </div>
+                        <div class="tool-item">
+                            <img src="images.png" alt="MySQL">
+                        </div>
+                        <div class="tool-item">
+                            <img src="PHP-logo.svg.png" alt="PHP">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="Rey.jpeg" alt="Reygina Azahra">
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education-section animate-on-scroll">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 3em; margin-bottom: 50px; color: #2c5530;">PENDIDIKAN</h2>
+                <div class="education-content">
+                    <div class="education-item">
+                        <img src="uika.png" class="education-logo">
+                        <h3>UNIVERSITAS IBN KHALDUN BOGOR</h3>
+                        <p><strong>2023 - SEKARANG</strong></p>
+                        <p>Prodi Sistem Informasi | IPK: 3.77/4.00</p>
+                    </div>
+                    <div class="education-item">
+                        <img src="SMK.jpg" class="education-logo">
+                        <h3>SMK MUHAMMADIYAH 2 KUNINGAN</h3>
+                        <p><strong>2021-2023</strong></p>
+                        <p>Teknik Komputer Dan Jaringan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section animate-on-scroll">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 3em; margin-bottom: 30px;">SKILLS</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>HARD SKILL</h3>
+                        <ul class="skill-list">
+                            <li>Desain UI/UX</li>
+                            <li>Database Design MySQL</li>
+                            <li>Visualisasi Data</li>
+                            <li>PHP</li>
+                            <li>Data Cleaning</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>SOFT SKILL</h3>
+                        <ul class="skill-list">
+                            <li>Komunikasi Tim</li>
+                            <li>Manajemen Waktu</li>
+                            <li>Teliti</li>
+                            <li>Kreatif</li>
+                            <li>Mampu menyelesaikan masalah</li>
+                            <li>Mudah beradaptasi</li>
+                            <li>Mampu bekerja dalam tim dalam menyusun solusi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section animate-on-scroll">
+            <h2>PROYEK AKADEMIS</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="MAPS.png" class="project-image">
+                    <div class="project-content">
+                        <h3>Lokasi UMKM</h3>
+                        <p>Melakukan penelitian di sebuah UMKM parfum dengan tujuan untuk membantu usaha tersebut dalam memahami performa penjualannya dengan lebih baik melalui visualisasi data KPI. Dengan mengolah data transaksi yang ada, saya menyajikan informasi seperti tren penjualan bulanan, parfum terlaris, serta kontribusi tiap produk dalam bentuk grafik yang mudah dipahami, sehingga dapat mendukung pengambilan keputusan bisnis secara lebih tepat.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="database.png" class="project-image">
+                    <div class="project-content">
+                        <h3>Desain Database</h3>
+                        <p>Mengumpulkan data parfum dan data transaksi dari toko tersebut. Data tersebut kemudian dibersihkan (data cleaning) untuk menghilangkan duplikasi dan memperbaiki format. Setelah itu, saya mendesain database menggunakan MySQL untuk mengelola data dengan rapi. Selanjutnya, data divisualisasikan menggunakan PHP dan Chart.js dalam bentuk grafik KPI seperti tren penjualan, parfum terlaris, dan capaian target untuk membantu pemilik toko memahami performa penjualan secara efektif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization Results -->
+        <section class="projects-section animate-on-scroll">
+            <h2>HASIL VISUALISASI DATA KPI</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="grafik.jpeg" class="project-image">
+                    <div class="project-content">
+                        <h3>Dashboard Analisis</h3>
+                        <p>Grafik pie memperlihatkan distribusi transaksi berdasarkan daerah, menunjukkan area dengan permintaan tertinggi. Grafik tren penjualan bulanan menunjukkan peningkatan transaksi dan omzet dari bulan sebelumnya, serta grafik produk terlaris menampilkan parfum-parfum yang paling diminati pelanggan, seperti “Sisi”, “Vanilla Ice”, dan “VC Sandalwood”.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="grafikbatang.jpeg" class="project-image">
+                    <div class="project-content">
+                        <h3>Visualisasi KPI</h3>
+                        <p>Grafik batang menunjukkan daftar pelanggan dengan jumlah transaksi terbanyak, di mana Fatimah dan Khamila berada di posisi teratas dengan masing-masing 6 transaksi.
+Pada bagian KPI penjualan, tercatat bahwa penjualan bulan ini telah mencapai 92% dari target sebesar Rp 3.000.000, dengan sisa Rp 254.000 yang belum tercapai. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section animate-on-scroll">
+            <div class="container">
+                <h2>TERIMA KASIH</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <span>0857-9406-2741</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <span>reyginaazahra07@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Scroll Animation
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        // Parallax Effect
+        function parallaxEffect() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.header');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }
+
+        // Smooth Scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Interactive hover effects
+        document.querySelectorAll('.project-card, .education-item, .tool-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Click effects for interactive elements
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const text = this.querySelector('span').textContent;
+                if (text.includes('@')) {
+                    window.open(`mailto:${text}`, '_blank');
+                } else {
+                    window.open(`tel:${text}`, '_blank');
+                }
+            });
+        });
+
+        // Floating animation for decorative elements
+        function createFloatingElements() {
+            const decorativeElements = ['✨', '⭐', '🌟', '💫'];
+            
+            setInterval(() => {
+                const element = document.createElement('div');
+                element.textContent = decorativeElements[Math.floor(Math.random() * decorativeElements.length)];
+                element.style.position = 'fixed';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = '100%';
+                element.style.fontSize = '2em';
+                element.style.pointerEvents = 'none';
+                element.style.zIndex = '1000';
+                element.style.animation = 'floatUp 4s ease-out forwards';
+                
+                document.body.appendChild(element);
+                
+                setTimeout(() => {
+                    element.remove();
+                }, 4000);
+            }, 3000);
+        }
+
+        // Add floating animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            parallaxEffect();
+        });
+
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            createFloatingElements();
+        });
+
+        // Typing effect for header
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect
+        window.addEventListener('load', () => {
+            const headerTitle = document.querySelector('.header h1');
+            const originalText = headerTitle.textContent;
+            typeWriter(headerTitle, originalText, 150);
+        });
+    </script>
+</body>
+</html>
